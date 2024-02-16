@@ -26,7 +26,6 @@ exports.logout = (req,res,next) =>{
 exports.authenticateLogin = async (req,res,next) => {
     const {email,password} = req.body;
     const emailExists = await User.checkemailExists(email,1);
-    // console.log("emailExists",emailExists, emailExists.password, password);
     if(emailExists != false ){
         const valid = await bcrypt.compare(password, emailExists.password);
         console.log("valid", valid);
@@ -105,16 +104,6 @@ exports.listUserExpenses = async (req,res,next) => {
     }
 
     return res.status(200).send(response);
-    // const [expenseData] = await db.execute("select * from expenses where expenseUserId = ? and Month = ? and year = ? order by date desc ",[userId, month, year]);
-    // if(expenseData.length != 0){
-    //     const {cardAmount,cashAmount,expenses} = Income.updateIncome(expenseData);
-    //     data[0].cardAmount -= cardAmount;
-    //     data[0].cashAmount -= cashAmount;
-    //     return res.render("userExpenses.ejs", {userId : userId,month: month,year: year,amount: data, expenseData: expenseData,expenses: expenses});
-    // }else{
-    //     return res.render("userExpenses.ejs", {userId : userId,month: month, year : year, amount: data, expenseData: expenseData,expenses: 0});
-
-    // }
 }
 
 exports.listUserExpensesParticularMonth = async (req,res,next) => {

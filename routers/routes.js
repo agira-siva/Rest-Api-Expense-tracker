@@ -12,7 +12,7 @@ router.post("/signup" , body("password").isLength({min: 8}).withMessage("less th
 
 router.get("/login", routes.login);
 
-router.post("/login", auth, routes.authenticateLogin);
+router.post("/login",routes.authenticateLogin);
 
 router.get("/logout", routes.logout);
 
