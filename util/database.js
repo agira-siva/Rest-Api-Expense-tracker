@@ -21,7 +21,7 @@ async function connectToCluster(uri) {
     }
  }
 
-async function executeStudentCrudOperations() {
+async function connectToDatabase() {
     const uri = process.env.DB_URI;
     let mongoClient;
  
@@ -43,7 +43,7 @@ async function executeStudentCrudOperations() {
  }
 
  module.exports.db_collection = db_collection;
- module.exports.executeStudentCrudOperations = executeStudentCrudOperations;
+ module.exports.connectToDatabase = connectToDatabase;
 
 
  
